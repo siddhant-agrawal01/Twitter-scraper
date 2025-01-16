@@ -12,6 +12,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from bson import json_util
 from bson.objectid import ObjectId
+from selenium.webdriver.chrome.service import Service
 
 app = Flask(__name__)
 
