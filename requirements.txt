@@ -6,3 +6,4 @@ flask
 pymongo[srv]
 dj-database-url
 gunicorn
+chromedriver-autoinstaller==0.6.2
