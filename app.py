@@ -179,6 +179,3 @@ if __name__ == '__main__':
 
 
 
-#     const trendingElements = Array.from(document.querySelectorAll('.css-175oi2r > .css-175oi2r.r-1adg3ll.r-1ny4l3l > .css-175oi2r'));
-# const trendingData = trendingElements.map(el => el.textContent);
-# console.log(trendingData);
