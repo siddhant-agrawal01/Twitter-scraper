@@ -3,13 +3,23 @@ services:
     name: twitter-scraper
     env: python
     buildCommand: |
-      # Install Chrome and dependencies
-      wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-      echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+      # Add Google Chrome repository
       apt-get update
-      apt-get install -y google-chrome-stable unzip curl
+      apt-get install -y wget gnupg
+      wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+      sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+      
+      # Install Chrome and other dependencies
+      apt-get update
+      apt-get install -y google-chrome-stable xvfb
+      
+      # Verify Chrome installation
+      google-chrome --version
+      
       pip install -r requirements.txt
     startCommand: python app.py
     envVars:
+      - key: PORT
+        value: "10000"
       - key: PYTHONUNBUFFERED
-        value: 1
+        value: "1"

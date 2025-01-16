@@ -35,15 +35,14 @@ def scrape():
     options.add_argument('--disable-notifications')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
-    options.binary_location = '/usr/bin/google-chrome'
 
     try:
         print("Launching Chrome...")
-        # service = ChromeService(ChromeDriverManager().install())
+        service = ChromeService(ChromeDriverManager().install())
         # driver = webdriver.Chrome(service=service, options=options)
         # wait = WebDriverWait(driver, 20)
 
-        service = Service(ChromeDriverManager().install())
+        # service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
         wait = WebDriverWait(driver, 20)
         
@@ -169,7 +168,8 @@ def index():
     return render_template('index.html', data=all_data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
 
 
 
