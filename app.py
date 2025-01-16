@@ -35,7 +35,7 @@ def scrape():
     options.add_argument('--disable-notifications')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
-    options.binary_location = os.getenv('CHROME_BIN', '/usr/bin/google-chrome')
+    options.binary_location = '/usr/bin/google-chrome'
 
     try:
         print("Launching Chrome...")
@@ -43,7 +43,7 @@ def scrape():
         # driver = webdriver.Chrome(service=service, options=options)
         # wait = WebDriverWait(driver, 20)
 
-        service = Service(os.getenv('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver'))
+        service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
         wait = WebDriverWait(driver, 20)
         
