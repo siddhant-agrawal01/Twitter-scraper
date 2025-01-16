@@ -3,3 +3,5 @@ webdriver-manager
 requests
 pymongo
 flask
+pymongo[srv]
+dj-database-url
