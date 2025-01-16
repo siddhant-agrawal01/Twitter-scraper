@@ -35,6 +35,8 @@ def scrape():
     options.add_argument('--disable-notifications')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--disable-gpu')
+    options.binary_location = '/usr/bin/google-chrome-stable'  # Path to Chrome binary
+
 
     try:
         print("Launching Chrome...")

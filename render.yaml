@@ -16,6 +16,7 @@ services:
       # Verify Chrome installation
       google-chrome --version
       
+      # Install Python dependencies
       pip install -r requirements.txt
     startCommand: python app.py
     envVars:
