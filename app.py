@@ -32,10 +32,17 @@ def scrape():
     options.add_argument('--headless')  # Run Chrome in headless mode
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--disable-notifications')
-    
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
+    options.binary_location = os.getenv('CHROME_BIN', '/usr/bin/google-chrome')
+
     try:
         print("Launching Chrome...")
-        service = ChromeService(ChromeDriverManager().install())
+        # service = ChromeService(ChromeDriverManager().install())
+        # driver = webdriver.Chrome(service=service, options=options)
+        # wait = WebDriverWait(driver, 20)
+
+        service = Service('/usr/bin/chromedriver')
         driver = webdriver.Chrome(service=service, options=options)
         wait = WebDriverWait(driver, 20)
         
