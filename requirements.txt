@@ -5,3 +5,4 @@ pymongo
 flask
 pymongo[srv]
 dj-database-url
+gunicorn
