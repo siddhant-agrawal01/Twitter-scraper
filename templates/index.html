@@ -171,7 +171,7 @@
       {% if data %} {% set latest = data[0] %}
       <div class="latest-scrape">
         <h2>Latest Scrape Results</h2>
-        <p>Scraped at: {{ latest.end_time }} | IP: {{ latest.ip_address }}</p>
+        <p>Scraped at: {{ latest.end_time }} | IP: {{ latest.ip_address }} | {{ latest.proxy_info }}</p>
         <div class="trend-item"><span>#1:</span> {{ latest.trend1 }}</div>
         <div class="trend-item"><span>#2:</span> {{ latest.trend2 }}</div>
         <div class="trend-item"><span>#3:</span> {{ latest.trend3 }}</div>
@@ -205,6 +205,7 @@
             <th>Trend #8</th>
             <th>Trend #9</th>
             <th>Trend #10</th>
+            <th>Proxy Used</th>
             <th>IP Used</th>
           </tr>
         </thead>
@@ -222,6 +223,7 @@
             <td>{{ item.trend8 }}</td>
             <td>{{ item.trend9 }}</td>
             <td>{{ item.trend10 }}</td>
+            <td>{{ item.proxy_used }}</td>
             <td>{{ item.ip_address }}</td>
           </tr>
           {% endfor %}
