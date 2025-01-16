@@ -12,6 +12,31 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from bson import json_util
 from bson.objectid import ObjectId
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+
+
+
+
+# Configure Chrome options
+options = Options()
+options.add_argument("--headless")  # Run in headless mode
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--disable-gpu")
+
+# Point to the Chrome binary and Chromedriver
+options.binary_location = "/usr/bin/google-chrome"
+service = Service("/usr/bin/chromedriver")  # Ensure Chromedriver is in PATH
+
+
+
+
+
+
+
+
 
 app = Flask(__name__)
 
