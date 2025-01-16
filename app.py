@@ -43,7 +43,7 @@ def scrape():
         # driver = webdriver.Chrome(service=service, options=options)
         # wait = WebDriverWait(driver, 20)
 
-        service = Service('/usr/bin/chromedriver')
+        service = Service(os.getenv('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver'))
         driver = webdriver.Chrome(service=service, options=options)
         wait = WebDriverWait(driver, 20)
         
