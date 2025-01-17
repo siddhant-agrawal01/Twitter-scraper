@@ -29,11 +29,9 @@ def scrape():
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
+    # Remove headless mode to see the automation
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--disable-notifications')
-    options.binary_location = '/usr/bin/chromium'
-    options.add_argument('--disable-software-rasterizer')
-
     
     try:
         print("Launching Chrome...")
@@ -164,11 +162,6 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-
-
 
 
 
