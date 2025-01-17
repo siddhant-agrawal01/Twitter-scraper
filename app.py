@@ -30,6 +30,8 @@ def scrape():
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--disable-extensions')
     # Remove headless mode to see the automation
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--disable-notifications')
@@ -43,7 +45,7 @@ def scrape():
         # Login process
         print("Navigating to Twitter login...")
         driver.get("https://twitter.com/login")
-        time.sleep(3)  # Wait for page load
+        time.sleep(2)  # Reduced from 3
         
         # Login credentials (replace with your credentials)
         USERNAME = "0901io211099"
@@ -63,11 +65,11 @@ def scrape():
         )
         password_input.send_keys(PASSWORD)
         password_input.send_keys(Keys.RETURN)
-        time.sleep(5)  # Wait for login
+        time.sleep(3)  # Reduced from 5
         
         print("Navigating to Trending page...")
         driver.get("https://twitter.com/explore/tabs/for-you")
-        time.sleep(5)
+        time.sleep(3)  # Reduced from 5
         
         print("Looking for trending topics...")
         # Wait for trending section to load
@@ -113,6 +115,7 @@ def scrape():
             
             collection.insert_one(data)
             print("Data saved to MongoDB")
+            driver.quit()  # Ensure prompt driver cleanup
             return redirect(url_for('index'))
             
         except Exception as mongo_error:
