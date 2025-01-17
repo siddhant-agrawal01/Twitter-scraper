@@ -12,7 +12,6 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from bson import json_util
 from bson.objectid import ObjectId
-from selenium.webdriver.chrome.service import Service
 
 app = Flask(__name__)
 
@@ -30,21 +29,14 @@ def scrape():
     options = webdriver.ChromeOptions()
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--headless')  # Run Chrome in headless mode
+    options.add_argument('--headless')
+    # Remove headless mode to see the automation
     options.add_argument('--window-size=1920,1080')
     options.add_argument('--disable-notifications')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.binary_location = '/usr/bin/google-chrome-stable'  # Path to Chrome binary
-
-
+    
     try:
         print("Launching Chrome...")
         service = ChromeService(ChromeDriverManager().install())
-        # driver = webdriver.Chrome(service=service, options=options)
-        # wait = WebDriverWait(driver, 20)
-
-        # service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
         wait = WebDriverWait(driver, 20)
         
@@ -170,9 +162,7 @@ def index():
     return render_template('index.html', data=all_data)
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 10000))
-    app.run(host='0.0.0.0', port=port)
-
+    app.run(debug=True)
 
 
 
