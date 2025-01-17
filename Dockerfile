@@ -24,7 +24,6 @@ RUN apt-get update && \
                        libglib2.0-0 \
                        libgssapi-krb5-2 \
                        libgtk-3-0 \
-                       libicu67 \
                        libjpeg62-turbo \
                        libk5crypto3 \
                        libkrb5-3 \
